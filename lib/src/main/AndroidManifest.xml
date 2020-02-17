@@ -1,2 +1,19 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="dev.haenara.apkdownstall" />
+    package="dev.haenara.apkdownstall">
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES"/>
+
+    <application>
+        <provider
+            android:name="DownstallerFileProvider"
+            android:authorities="${applicationId}.DownstallerFileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
+    </application>
+</manifest>
